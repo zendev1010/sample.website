@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZEN DESIGN | Creative Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #080808;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+:root {
+  --red: #ff3030;
+  --dark: #111;
+  --grey: #aaa;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,8,8,.92);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #222;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--red);
+  letter-spacing: 2px;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: var(--red);
+}
+
+.hero {
+  min-height: 90vh;
+  padding: 100px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 80% 40%, #4b0808 0%, transparent 40%),
+    #080808;
+}
+
+.tag {
+  color: var(--red);
+  letter-spacing: 4px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 9vw, 85px);
+  line-height: 1.05;
+  max-width: 800px;
+}
+
+.hero h1 span {
+  color: var(--red);
+}
+
+.hero p {
+  color: var(--grey);
+  line-height: 1.8;
+  max-width: 550px;
+  margin: 25px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 25px;
+  background: var(--red);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: white;
+  color: var(--red);
+  transform: translateY(-3px);
+}
+
+section {
+  padding: 85px 8%;
+}
+
+.section-title {
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+
+.section-title span {
+  color: var(--red);
+}
+
+.subtitle {
+  color: var(--grey);
+  margin-bottom: 40px;
+}
+
+/* PROJECTS */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+.project {
+  background: #151515;
+  border: 1px solid #292929;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.project:hover {
+  transform: translateY(-8px);
+  border-color: var(--red);
+  box-shadow: 0 10px 30px #ff303022;
+}
+
+.project img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background: #222;
+}
+
+.project-info {
+  padding: 18px;
+}
+
+.project-info h3 {
+  margin-bottom: 8px;
+}
+
+.project-info p {
+  color: var(--grey);
+  font-size: 13px;
+}
+
+.extra-project {
+  display: none;
+}
+
+.extra-project.visible {
+  display: block;
+  animation: appear .5s ease;
+}
+
+#showMore {
+  display: block;
+  margin: 35px auto 0;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+}
+
+/* SERVICES */
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.service {
+  padding: 30px;
+  background: #141414;
+  border: 1px solid #292929;
+  border-radius: 12px;
+  transition: .3s;
+}
+
+.service:hover {
+  border-color: var(--red);
+  transform: translateY(-5px);
+}
+
+.service .emoji {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.service p {
+  color: var(--grey);
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+/* ABOUT */
+
+.about {
+  background: #101010;
+}
+
+.about p {
+  max-width: 700px;
+  color: var(--grey);
+  line-height: 1.9;
+}
+
+/* CONTACT */
+
+.contact {
+  text-align: center;
+  background: radial-gradient(circle, #350909, #080808 65%);
+}
+
+.contact p {
+  color: var(--grey);
+  margin: 20px auto 30px;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.email-btn {
+  background: transparent;
+  border: 1px solid var(--red);
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #777;
+  border-top: 1px solid #222;
+  font-size: 13px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media(max-width: 600px) {
+  header {
+    padding: 16px 5%;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: 75vh;
+    padding: 75px 7%;
+  }
+
+  section {
+    padding: 65px 7%;
+  }
+
+  .section-title {
+    font-size: 29px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">ZEN DESIGN.</div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Work</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+  <div class="tag">CREATIVE DESIGNER / THUMBNAIL ARTIST</div>
+
+  <h1>
+    I CREATE<br>
+    <span>VISUAL</span> IMPACT.
+  </h1>
+
+  <p>
+    I design eye-catching YouTube thumbnails,
+    gaming graphics and digital artwork that
+    help creators stand out.
+  </p>
+
+  <div>
+    <a href="#projects" class="btn">Explore My Work ↗</a>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+  <h2 class="section-title">My <span>Projects</span></h2>
+  <p class="subtitle">A collection of my creative designs.</p>
+
+  <div class="projects">
+
+    <div class="project">
+      <img src="images/freefire.jpg" alt="Free Fire thumbnail">
+      <div class="project-info">
+        <h3>Free Fire Thumbnail</h3>
+        <p>Gaming / YouTube Thumbnail</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="images/minecraft.jpg" alt="Minecraft thumbnail">
+      <div class="project-info">
+        <h3>Minecraft Thumbnail</h3>
+        <p>Gaming / YouTube Thumbnail</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="images/infinix.jpg" alt="Infinix review thumbnail">
+      <div class="project-info">
+        <h3>Infinix GT Review</h3>
+        <p>Tech / YouTube Thumbnail</p>
+      </div>
+    </div>
+
+    <div class="project extra-project">
+      <img src="images/design4.jpg" alt="Creative design">
+      <div class="project-info">
+        <h3>Creative Design 04</h3>
+        <p>Graphic Design</p>
+      </div>
+    </div>
+
+    <div class="project extra-project">
+      <img src="images/design5.jpg" alt="Creative design">
+      <div class="project-info">
+        <h3>Creative Design 05</h3>
+        <p>Graphic Design</p>
+      </div>
+    </div>
+
+    <div class="project extra-project">
+      <img src="images/design6.jpg" alt="Creative design">
+      <div class="project-info">
+        <h3>Creative Design 06</h3>
+        <p>Graphic Design</p>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="btn" id="showMore">SHOW ALL PROJECTS ↓</button>
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+  <h2 class="section-title">My <span>Services</span></h2>
+  <p class="subtitle">What I can create for you.</p>
+
+  <div class="services">
+
+    <div class="service">
+      <div class="emoji">🎮</div>
+      <h3>Gaming Thumbnails</h3>
+      <p>Attractive thumbnails for gaming videos.</p>
+    </div>
+
+    <div class="service">
+      <div class="emoji">📱</div>
+      <h3>Social Media Posts</h3>
+      <p>Creative posts for Instagram and other platforms.</p>
+    </div>
+
+    <div class="service">
+      <div class="emoji">🎨</div>
+      <h3>Gaming Graphics</h3>
+      <p>Custom gaming artwork and promotional designs.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+  <h2 class="section-title">About <span>Me</span></h2>
+
+  <p>
+    Hello! I'm a beginner graphic designer passionate
+    about gaming designs and creative visuals.
+    I enjoy creating modern, attractive and
+    professional-looking graphics.
+    This portfolio showcases my work and creativity.
+  </p>
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+  <h2 class="section-title">Let's <span>Work Together</span></h2>
+
+  <p>
+    Have a project in mind? Let's create something amazing.
+  </p>
+
+  <div class="contact-buttons">
+
+    <a class="btn"
+       href="https://wa.me/91XXXXXXXXXX"
+       target="_blank">
+       WhatsApp Me
+    </a>
+
+    <a class="btn email-btn"
+       href="https://mail.google.com/mail/?view=cm&fs=1&to=YOUR_EMAIL@gmail.com"
+       target="_blank">
+       Email Me
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 ZEN DESIGN. All Rights Reserved.
+</footer>
+
+<script>
+const showMore = document.getElementById("showMore");
+
+showMore.addEventListener("click", function() {
+  document.querySelectorAll(".extra-project").forEach(function(card) {
+    card.classList.add("visible");
+  });
+
+  showMore.style.display = "none";
+});
+</script>
+
+</body>
+</html>
